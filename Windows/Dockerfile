@@ -1,4 +1,4 @@
-FROM microsoft/windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" \ 
     && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
@@ -12,7 +12,7 @@ RUN powershell -NoProfile -InputFormat None -Command \
 
 RUN powershell -NoProfile -InputFormat None -Command \
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
-    (New-Object System.Net.WebClient).DownloadFile('https://github.com/kaizenman/utils/archive/install_opengl.zip', 'install_opengl.zip'); \
+    (New-Object System.Net.WebClient).DownloadFile('https://github.com/kaizenman/install_opengl/archive/opengl_new.zip', 'install_opengl.zip'); \
     7z e .\install_opengl.zip;
 
 RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command \
